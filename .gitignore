@@ -1,0 +1,63 @@
+# Archivos y carpetas a ignorar en Git
+# ===================================
+
+# 📦 Dependencias
+node_modules/
+npm-debug.log
+package-lock.json
+
+# 🔐 Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# 📝 Archivos de sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# 📋 Archivos de log
+*.log
+logs/
+
+# 🛠️ IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.project
+.settings/
+*.iml
+
+# 🗂️ Carpetas de configuración local
+.eslintignore
+.prettierignore
+
+# 📊 Documentación técnica (no es código)
+# Comentar estas líneas si quieres compartir la documentación de desarrollo
+# CLAUDE.md                    # Guía interna para Claude Code
+# DB_parametrization/          # Scripts y planes de BD (uso solo local)
+
+# 🚀 Archivos de deployment
+dist/
+build/
+
+# 💾 Base de datos (no incluir datos locales)
+# personal_management_backup.sql
+# *.sql (descomenta si quieres ignorar scripts SQL)
+
+# 🐳 Docker
+docker-compose.override.yml
+
+# 📱 Temporales
+tmp/
+temp/
+cache/
+
+# Excepciones (archivos que SÍ queremos incluir)
+!.gitkeep
+!.env.example
+!DB_parametrization/DB_relational_model.sql
