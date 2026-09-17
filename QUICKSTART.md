@@ -185,11 +185,56 @@ Si necesitas más detalles:
 
 ## ⏸️ Detener la Aplicación
 
+### Método 1: Usando Ctrl + C (Recomendado)
+
 ```bash
-# En ambas terminales, presiona:
+# Terminal 1 (Backend) - Presiona:
 Ctrl + C
 
-# Luego cierra las terminales
+# Verás:
+# ^C
+# Servidor detenido
+
+# Terminal 2 (Frontend) - Presiona:
+Ctrl + C
+
+# Verás:
+# ^C
+# Keyboard interrupt received, exiting
+```
+
+### Método 2: Cerrar las terminales
+
+```bash
+# Simplemente cierra ambas ventanas de terminal
+# o escribe en cada una:
+exit
+```
+
+### Método 3: Si los puertos siguen ocupados
+
+```bash
+# Encuentra qué proceso usa el puerto 3000 (Backend)
+lsof -i :3000
+
+# Mata el proceso (reemplaza PID con el número que veas)
+kill -9 PID
+
+# Encuentra qué proceso usa el puerto 8000 (Frontend)
+lsof -i :8000
+
+# Mata el proceso
+kill -9 PID
+```
+
+---
+
+### ✅ Verificar que se Detuvieron
+
+```bash
+# Si estos comandos no devuelven nada, está OK
+lsof -i :3000  # No debería mostrar nada
+lsof -i :8000  # No debería mostrar nada
 ```
 
 ---

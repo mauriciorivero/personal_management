@@ -14,11 +14,12 @@ Construido con **Node.js/Express** (backend), **MySQL** (base de datos) y **Java
 3. [Requisitos Previos](#requisitos-previos)
 4. [Instalación y Configuración](#instalación-y-configuración)
 5. [Comandos para Iniciar la Aplicación](#comandos-para-iniciar-la-aplicación)
-6. [Estructura del Proyecto](#estructura-del-proyecto)
-7. [Modelo de Datos](#modelo-de-datos)
-8. [API REST - Endpoints Disponibles](#api-rest---endpoints-disponibles)
-9. [Cómo Usar la Aplicación](#cómo-usar-la-aplicación)
-10. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+6. [Detener los Servidores](#detener-los-servidores)
+7. [Estructura del Proyecto](#estructura-del-proyecto)
+8. [Modelo de Datos](#modelo-de-datos)
+9. [API REST - Endpoints Disponibles](#api-rest---endpoints-disponibles)
+10. [Cómo Usar la Aplicación](#cómo-usar-la-aplicación)
+11. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 
 ---
 
@@ -480,6 +481,162 @@ Uso:
 ```bash
 docker-compose up
 ```
+
+---
+
+## ⏹️ Detener los Servidores
+
+### 🛑 Opción 1: Terminales Separadas (Recomendado)
+
+Para detener el **Backend** y **Frontend** si los iniciaste en terminales separadas:
+
+#### Detener Backend
+
+En la **Terminal 1** donde corre el backend:
+
+```bash
+# Presiona las siguientes teclas simultáneamente:
+Ctrl + C
+
+# Verás un mensaje similar a:
+# ^C
+# Servidor detenido
+
+# Luego cierra la terminal (opcional)
+exit
+```
+
+#### Detener Frontend
+
+En la **Terminal 2** donde corre el frontend:
+
+```bash
+# Presiona las siguientes teclas simultáneamente:
+Ctrl + C
+
+# Verás un mensaje similar a:
+# ^C
+# Keyboard interrupt received, exiting
+
+# Luego cierra la terminal (opcional)
+exit
+```
+
+---
+
+### 🛑 Opción 2: Script Único (run-all.sh)
+
+Si usaste el script `run-all.sh`:
+
+```bash
+# En la terminal donde ejecutaste el script, presiona:
+Ctrl + C
+
+# Esto detendrá tanto el backend como el frontend automáticamente
+
+# El script mostrará:
+# Presiona Ctrl+C para detener la aplicación
+# ^C
+# Deteniendo procesos...
+```
+
+---
+
+### 🛑 Opción 3: Docker
+
+Si usaste Docker Compose:
+
+```bash
+# En la terminal donde ejecutaste docker-compose up, presiona:
+Ctrl + C
+
+# O en otra terminal, ejecuta:
+docker-compose down
+
+# Esto detendrá MySQL, Backend y Frontend simultáneamente
+```
+
+---
+
+### 🛑 Detener Puertos Específicos (Alternativa)
+
+Si por alguna razón los servidores siguen corriendo:
+
+#### Detener Backend (Puerto 3000)
+
+```bash
+# macOS/Linux
+lsof -i :3000
+# Encontrará el PID (número de proceso)
+# Luego mata el proceso
+kill -9 PID
+
+# Windows (PowerShell)
+netstat -ano | findstr :3000
+# Encontrará el PID
+taskkill /PID <PID> /F
+```
+
+#### Detener Frontend (Puerto 8000)
+
+```bash
+# macOS/Linux
+lsof -i :8000
+# Encontrará el PID
+kill -9 PID
+
+# Windows (PowerShell)
+netstat -ano | findstr :8000
+taskkill /PID <PID> /F
+```
+
+#### Detener MySQL (Puerto 3306)
+
+```bash
+# macOS (Homebrew)
+brew services stop mysql
+
+# Linux
+sudo systemctl stop mysql
+
+# Windows (Services)
+# En Services (services.msc) busca MySQL y haz clic en Detener
+
+# O desde terminal:
+mysql.server stop  # macOS
+sudo service mysql stop  # Linux
+```
+
+---
+
+### ✅ Verificar que se Detuvieron
+
+Después de presionar `Ctrl + C`, verifica que los puertos estén libres:
+
+```bash
+# Verifica que no hay nada en puerto 3000
+lsof -i :3000
+# No debería mostrar nada
+
+# Verifica que no hay nada en puerto 8000
+lsof -i :8000
+# No debería mostrar nada
+
+# Verifica que no hay nada en puerto 3306
+lsof -i :3306
+# No debería mostrar nada (o solo MySQL)
+```
+
+---
+
+### 💡 Tips Útiles
+
+| Problema | Solución |
+|----------|----------|
+| **Terminal no responde** | Presiona `Ctrl + C` varias veces |
+| **Puerto sigue ocupado** | Usa `kill -9 PID` (macOS/Linux) |
+| **No puedo cerrar terminal** | Abre una nueva terminal y mata el proceso por PID |
+| **Todo congelado** | Cierra todas las terminales y reinicia |
 
 ---
 
