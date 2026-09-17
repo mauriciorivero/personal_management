@@ -99,8 +99,8 @@ const UsuariosOrganism = (function () {
       await cargar();
 
       // Otros modulos dependen de la lista de usuarios (selects de Telefonos y Perfiles Sociales)
-      if (window.TelefonosOrganism) TelefonosOrganism.refrescarSelectUsuarios();
-      if (window.PerfilesSocialesOrganism) PerfilesSocialesOrganism.refrescarSelects();
+      if (typeof TelefonosOrganism !== 'undefined') TelefonosOrganism.refrescarSelectUsuarios();
+      if (typeof PerfilesSocialesOrganism !== 'undefined') PerfilesSocialesOrganism.refrescarSelects();
     } catch (error) {
       mostrarNotificacion(error.message, 'error');
     }

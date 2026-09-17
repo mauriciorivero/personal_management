@@ -77,7 +77,7 @@ const RedesSocialesOrganism = (function () {
       await cargar();
 
       // El select de Perfiles Sociales depende del catalogo de redes sociales
-      if (window.PerfilesSocialesOrganism) PerfilesSocialesOrganism.refrescarSelects();
+      if (typeof PerfilesSocialesOrganism !== 'undefined') PerfilesSocialesOrganism.refrescarSelects();
     } catch (error) {
       mostrarNotificacion(error.message, 'error');
     }
@@ -101,7 +101,7 @@ const RedesSocialesOrganism = (function () {
         await RedesSocialesApi.eliminar(id);
         mostrarNotificacion('Red social eliminada correctamente');
         await cargar();
-        if (window.PerfilesSocialesOrganism) PerfilesSocialesOrganism.refrescarSelects();
+        if (typeof PerfilesSocialesOrganism !== 'undefined') PerfilesSocialesOrganism.refrescarSelects();
       } catch (error) {
         mostrarNotificacion(error.message, 'error');
       }

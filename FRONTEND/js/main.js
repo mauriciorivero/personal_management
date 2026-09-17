@@ -24,6 +24,12 @@ function configurarNavegacionTabs() {
 async function iniciarAplicacion() {
   configurarNavegacionTabs();
 
+  // Convierte los selects de usuario/red social en combobox buscables
+  // (escribir para filtrar, flechas o scroll para recorrer las opciones)
+  mejorarSelectBuscable('telefono-usuario');
+  mejorarSelectBuscable('perfil-usuario');
+  mejorarSelectBuscable('perfil-red-social');
+
   await Promise.all([UsuariosOrganism.init(), RedesSocialesOrganism.init()]);
 
   await Promise.all([TelefonosOrganism.init(), PerfilesSocialesOrganism.init()]);

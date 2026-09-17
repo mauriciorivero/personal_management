@@ -6,7 +6,7 @@ const TelefonosOrganism = (function () {
   function refrescarSelectUsuarios() {
     const select = $('#telefono-usuario');
     const valorActual = select.value;
-    const usuarios = window.UsuariosOrganism ? UsuariosOrganism.obtenerListaUsuarios() : [];
+    const usuarios = typeof UsuariosOrganism !== 'undefined' ? UsuariosOrganism.obtenerListaUsuarios() : [];
 
     select.innerHTML = usuarios
       .map(u => `<option value="${u.id}">${escaparHtml(u.nombreCompleto)}</option>`)
@@ -17,7 +17,7 @@ const TelefonosOrganism = (function () {
 
   // Busca el nombre de un usuario por id dentro de la lista cargada (para mostrar en la tabla)
   function nombreUsuario(usuarioId) {
-    const usuarios = window.UsuariosOrganism ? UsuariosOrganism.obtenerListaUsuarios() : [];
+    const usuarios = typeof UsuariosOrganism !== 'undefined' ? UsuariosOrganism.obtenerListaUsuarios() : [];
     const usuario = usuarios.find(u => u.id === usuarioId);
     return usuario ? usuario.nombreCompleto : `Usuario #${usuarioId}`;
   }

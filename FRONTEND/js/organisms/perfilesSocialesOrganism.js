@@ -11,8 +11,8 @@ const PerfilesSocialesOrganism = (function () {
   function refrescarSelects() {
     const selectUsuario = $('#perfil-usuario');
     const selectRedSocial = $('#perfil-red-social');
-    const usuarios = window.UsuariosOrganism ? UsuariosOrganism.obtenerListaUsuarios() : [];
-    const redesSociales = window.RedesSocialesOrganism ? RedesSocialesOrganism.obtenerListaRedesSociales() : [];
+    const usuarios = typeof UsuariosOrganism !== 'undefined' ? UsuariosOrganism.obtenerListaUsuarios() : [];
+    const redesSociales = typeof RedesSocialesOrganism !== 'undefined' ? RedesSocialesOrganism.obtenerListaRedesSociales() : [];
 
     const valorUsuarioActual = selectUsuario.value;
     const valorRedSocialActual = selectRedSocial.value;

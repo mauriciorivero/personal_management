@@ -15,8 +15,11 @@ const environment = {
     port: Number(process.env.SERVER_PORT) || 3000
   },
   cors: {
-    // Origen permitido para las peticiones del frontend (evita bloqueos CORS)
-    origin: process.env.CORS_ORIGIN || 'http://localhost:8000'
+    // Origenes permitidos para las peticiones del frontend (evita bloqueos CORS).
+    // Admite una lista separada por comas en CORS_ORIGIN (ej: "http://localhost:8000,http://127.0.0.1:8000")
+    origin: (process.env.CORS_ORIGIN || 'http://localhost:8000,http://127.0.0.1:8000')
+      .split(',')
+      .map(origen => origen.trim())
   }
 };
 
